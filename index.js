@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 const peopleRouter = require("./routes/people");
+const port = process.env.PORT || 3000;
 
 app.use(express.json());
 
@@ -13,4 +14,8 @@ app.get("/", (req, res) => {
 
 app.use("/api/people", peopleRouter);
 
-app.listen(3000);
+app.listen(port, "0.0.0.0", () => {
+  console.log(`Example app listening at http://localhost:${port}`);
+});
+
+module.exports = app;
